@@ -77,19 +77,3 @@ jump project # -> /tmp/project
 jump missing # -> prints error and returns non-zero
 ```
 
-Troubleshooting
-- If `jump` prints a message about sourcing the script, follow the `source` instructions above.
-- If `jump` fails to change directory, run `pwd` and check for special characters or symbolic links that might affect the path.
-
----
-
-## Contributing
-
-- Please open a pull request with improvements, tests, or portability fixes.
-- If you'd like `jump` to behave differently (e.g., find the first occurrence instead of the nearest), we can add flags (like `--first` or `--last`) to control behavior.
-
----
-
-## License
-
-- Add a license file at repo root if needed. This file does not include a separate license notice.
