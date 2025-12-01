@@ -47,85 +47,11 @@ Note: Using `==` for string comparison is fine in `bash` (as the script uses `#!
 	 - `kill` — Terminate a process
 	 - `htop` — Interactive process viewer
 
-## Usage
+## Note :
+    Make script an executable in Linux:
+        - chmod +x filename.sh
+    Move to usr/local/bin to allow you to run from any directory:
+        - mv CheatSheet /usr/local/bin
 
-Make the script executable (once):
 
-```bash
-chmod +x scripts/CheatSheet.sh
-```
-
-Run a specific section:
-
-```bash
-./scripts/CheatSheet.sh files
-./scripts/CheatSheet.sh network
-./scripts/CheatSheet.sh processes
-```
-
-If you run the script without an argument or with an unrecognized argument, it will print the usage message:
-
-```bash
-Usage: ./scripts/CheatSheet.sh {files|network|processes}
-```
-
-### Helpful shortcuts
-
-- Add a short alias in your shell config (`~/.bashrc`, `~/.zshrc`):
-
-```bash
-alias cs='./scripts/CheatSheet.sh'
-```
-
-Then run `cs files` from the repo root.
-
-## Extension Ideas
-
-- Add a `--help` flag or `-h` to display usage and available sections.
-- Add a `list` section or `--list` switch to display all available sections programmatically.
-- Switch to `case` statements for clearer multi-case logic and easier additions.
-- Support multiple sections or `--all` to print all sections at once.
-- Output formatting (colors or column layout) for readability using `tput` or `printf`.
-
-## Example Improvements (small sample)
-
-1. Use proper `case` for readability and easier expansion:
-
-```bash
-case "$section" in
-	files)
-		# print files
-		;;
-	network)
-		# print network
-		;;
-	processes)
-		# print processes
-		;;
-	*)
-		echo "Usage: $0 {files|network|processes}"
-		;;
-esac
-```
-
-2. Add an `--all` mode:
-
-```bash
-if [ "$section" == "all" ]; then
-		# print everything
-fi
-```
-
-## Notes & Tips
-
-- Some commands listed (e.g., `ifconfig`, `netstat`) are legacy on modern Linux and have replacements (`ip`, `ss`). Consider including both variants.
-- The script is intended as a simple helper; it does not attempt to detect whether a command exists on the system.
-
-## License & Attribution
-
-Add your name (or the project's) and license if you wish to clarify usage, e.g. MIT License or CC0. This repository does not currently include a per-file license; consider adding `LICENSE` to the root if required.
-
----
-
-If you'd like, I can now automatically add this file to the repository and commit (and push) the change — let me know whether I should go ahead. ✅
 
