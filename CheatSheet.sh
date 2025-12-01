@@ -1,8 +1,13 @@
 #!/bin/bash
 
+# This script provides a cheat sheet for common Linux commands based on the specified section.
 section="$1"
+# Pull the argument after "cheatsheet.sh" to determine which section to display.
+# Ex. CheatSheet 
 
-if [ "$section" == "files" ]; then
+
+# IF statement to check which section to display
+if [ "$section" == "files" ]; then          #$Section pulls and open stored variable
     echo "Files Commands:"
     echo "ls - List directory contents"
     echo "cp - Copy files and directories"
