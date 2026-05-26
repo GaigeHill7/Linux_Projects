@@ -1,0 +1,22 @@
+Linux Authentication Threat Analyzer
+
+A Bash-based Linux security monitoring tool that analyzes authentication logs and detects suspicious sudo authentication failures from /var/log/auth.log.
+
+This project was created to practice:
+Linux administration
+Bash scripting
+Security log analysis
+Threat detection concepts
+Basic SOC-style reporting
+
+Features
+Detects failed sudo authentication attempts
+Extracts usernames associated with failed attempts
+Counts failed attempts per user
+Assigns severity levels:
+MODERATE
+HIGH
+CRITICAL
+Displays sample log entries for investigation
+Command-line option support
+Colorized terminal output for readability
