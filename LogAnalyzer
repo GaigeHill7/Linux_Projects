@@ -1,0 +1,49 @@
+#!/bin/bash
+
+## Establish Variables
+AUTH="/var/log/auth.log"
+
+######################################################### (1) Check for authentication logs ################################################
+sudo_failures() {
+	FAILED_LOGINS=$(grep "sudo" $AUTH | grep "authentication failure")
+
+	if [ -n "$FAILED_LOGINS" ]; then
+##Banner
+		echo '	'
+		echo -e '\e[1;33m		  ALERT...SUDO AUTHENTICATION FAILURES DETECTED\e[0m'
+		echo '-----------------------------------------------------------------------------'
+	
+##Find Failed Attempts
+		ATTEMPTS=$(echo "$FAILED_LOGINS" | grep -oP '\buser=\K\S+' | sort | uniq -c )
+	
+##Looping through users and printing details
+		echo "$ATTEMPTS" | while read COUNT USER; do
+			echo -e "\e[1;34m			 $USER -- $COUNT failures\e[0m"
+
+			echo "$FAILED_LOGINS" | grep "$USER" | head -3
+
+			if [ "$COUNT" -gt 5 ]; then
+				echo -e "\e[31m	 			CRITICAL\e[0m "
+			elif [ "$COUNT" -gt 2 ]; then
+				echo -e "\e[33m 				HIGH\e[0m "
+			else
+				echo -e "\e[32m 				MODERATE\e[0m "
+			fi 
+		done
+
+	fi
+}
+
+
+
+
+
+	
+case "$1" in
+	--sF)
+		sudo_failures
+		;;
+esac
+
+
+
